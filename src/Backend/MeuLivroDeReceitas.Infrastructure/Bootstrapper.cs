@@ -1,7 +1,9 @@
-﻿
-
-using FluentMigrator.Runner;
+﻿using FluentMigrator.Runner;
 using MeuLivroDeReceitas.Domain.Extension;
+using MeuLivroDeReceitas.Domain.Repositorios;
+using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
+using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -13,6 +15,10 @@ public static class Bootstrapper
     public static void AddRespositorio(this IServiceCollection services, IConfiguration configurationManager)
     {
         AddFluentMigrator(services, configurationManager);
+        AddContexto(services, configurationManager);
+        AddRepositorios(services);
+        AddUnidadeDeTrabalho(services);
+        
     }
 
     private static void AddFluentMigrator(IServiceCollection services, IConfiguration configurationManager)
@@ -29,5 +35,31 @@ public static class Bootstrapper
         var conexao = configurationManager.GetConexa();
 
         return $"{conexao}Database={nomeDatabase}";
+    }
+
+    private static void AddRepositorios(IServiceCollection services)
+    {
+        services.AddScoped<IUsuarioReadOnlyRepositorio, UsuarioRepositorio>()
+                .AddScoped<IUsuarioWriteOnlyRepositorio, UsuarioRepositorio>();
+        
+    }
+
+    private static void AddUnidadeDeTrabalho(IServiceCollection services)
+    {
+        services.AddScoped<IUnidadeDeTrabalho, UnidateDeTrabalho>();
+                
+    }
+
+    private static void AddContexto(IServiceCollection services, IConfiguration configurationManager)
+    {
+        var versaoServidor = new MySqlServerVersion(new Version(8,0,28));
+        var conectionString = configurationManager.GetConexaoCompleta();
+
+        services.AddDbContext<MeuLivroReceitaContext>(dbContextOptions=> 
+        {
+            dbContextOptions.UseMySql(conectionString, versaoServidor);
+         
+         });
+
     }
 }
