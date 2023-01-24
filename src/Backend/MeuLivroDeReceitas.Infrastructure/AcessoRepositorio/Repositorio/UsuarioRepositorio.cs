@@ -19,11 +19,11 @@ public class UsuarioRepositorio : IUsuarioReadOnlyRepositorio, IUsuarioWriteOnly
     }
     public async Task Adicionar(Usuario usuario)
     {
-        await _contexto.Usuarios.AddAsync(usuario);
+        await _contexto.usuarios.AddAsync(usuario);
     }
 
     public async Task<bool> ExistUsuarioEmail(string email)
     {
-       return await _contexto.Usuarios.AnyAsync(e=>e.Email==email);
+       return await _contexto.usuarios.AnyAsync(e=>e.Email==email);
     }
 }
