@@ -13,7 +13,7 @@ public class MeuLivroReceitaContext : DbContext
 
     public MeuLivroReceitaContext(DbContextOptions<MeuLivroReceitaContext> options) : base(options) { }
 
-    public DbSet<Usuario> Usuarios { get; set; }
+    public DbSet<Usuario> usuarios { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(MeuLivroReceitaContext).Assembly);

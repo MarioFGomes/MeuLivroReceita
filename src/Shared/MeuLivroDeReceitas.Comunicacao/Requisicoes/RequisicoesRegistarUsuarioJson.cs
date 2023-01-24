@@ -1,8 +1,6 @@
-﻿
+﻿namespace MeuLivroDeReceitas.Comunicacao.Requisicoes;
 
-namespace MeuLivroDeReceitas.Domain.Entidade;
-
-public class Usuario: EntidadeBase
+public class RequisicoesRegistarUsuarioJson
 {
     public string Nome { get; set; }
     public string Email { get; set; }

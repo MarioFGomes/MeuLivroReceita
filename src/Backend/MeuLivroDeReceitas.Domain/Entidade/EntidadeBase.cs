@@ -11,6 +11,7 @@ public class EntidadeBase
     public EntidadeBase()
     {
         Id=Guid.NewGuid();
-        DataRegisto=DateTime.Now;
+        DataRegisto = DateTime.UtcNow;
+        Status=1;
     }
 }

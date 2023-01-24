@@ -20,6 +20,6 @@ public class Versao001 : Migration
               .WithColumn("Nome").AsString(100).NotNullable()
               .WithColumn("Email").AsString(150).NotNullable()
               .WithColumn("Senha").AsString(2000).NotNullable()
-              .WithColumn("Telefone").AsString(15).NotNullable();
+              .WithColumn("Telefone").AsString(50).NotNullable();
     }
 }
