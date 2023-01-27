@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "c8d32f2f-2f6f-4e73-ab5c-6a7fa8b2c2f9",
+		"name": "MeuLivroReceitas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Criar Usuario",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var ddd= _.random(100,300)\r",
+							"var primeirotresnumero=_.random(100,900)\r",
+							"var segundotresnumero=_.random(100,900)\r",
+							"var terceirotresnumero=_.random(100,900)\r",
+							"numberphone= ddd + \" \"+ primeirotresnumero +\"-\"+segundotresnumero+\"-\"+terceirotresnumero\r",
+							"pm.environment.set(\"numberphone\",numberphone)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validar se a requisição foi feita com sucesso\",function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"    pm.response.to.be.withBody;\r",
+							"    pm.response.to.have.jsonBody(\"token\");\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Nome\":\"{{$randomFullName}}\",\r\n    \"Email\":\"{{$randomEmail}}\",\r\n    \"Senha\":\"{{$randomPassword}}\",\r\n    \"Telefone\":\"+{{numberphone}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URLBASE}}/api/usuario",
+					"host": [
+						"{{URLBASE}}"
+					],
+					"path": [
+						"api",
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URLBASE",
+			"value": "http://localhost:5073",
+			"type": "default"
+		}
+	]
+}
