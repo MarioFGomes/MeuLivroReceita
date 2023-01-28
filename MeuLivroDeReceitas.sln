@@ -11,23 +11,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{8739
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{24D572F9-2D77-4E24-8076-04CD727C3612}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.Comunicacao", "src\Shared\MeuLivroDeReceitas.Comunicacao\MeuLivroDeReceitas.Comunicacao.csproj", "{9E934B7C-DBEC-4A8F-866A-59754787BC41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.Comunicacao", "src\Shared\MeuLivroDeReceitas.Comunicacao\MeuLivroDeReceitas.Comunicacao.csproj", "{9E934B7C-DBEC-4A8F-866A-59754787BC41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.Exceptions", "src\Shared\MeuLivroDeReceitas.Exceptions\MeuLivroDeReceitas.Exceptions.csproj", "{8AA06C5E-B901-41C2-9397-5CB50546625D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.Exceptions", "src\Shared\MeuLivroDeReceitas.Exceptions\MeuLivroDeReceitas.Exceptions.csproj", "{8AA06C5E-B901-41C2-9397-5CB50546625D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.Aplication", "src\Backend\MeuLivroDeReceitas.Aplication\MeuLivroDeReceitas.Aplication.csproj", "{0EC5D35F-BDA2-4E50-A0FD-5870326590C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.Aplication", "src\Backend\MeuLivroDeReceitas.Aplication\MeuLivroDeReceitas.Aplication.csproj", "{0EC5D35F-BDA2-4E50-A0FD-5870326590C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.Domain", "src\Backend\MeuLivroDeReceitas.Domain\MeuLivroDeReceitas.Domain.csproj", "{97A1169F-8CD8-4FEA-8DA5-94716C296893}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.Domain", "src\Backend\MeuLivroDeReceitas.Domain\MeuLivroDeReceitas.Domain.csproj", "{97A1169F-8CD8-4FEA-8DA5-94716C296893}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.Infrastructure", "src\Backend\MeuLivroDeReceitas.Infrastructure\MeuLivroDeReceitas.Infrastructure.csproj", "{FA54A379-FEB9-43C0-8FC9-6404EF36C328}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.Infrastructure", "src\Backend\MeuLivroDeReceitas.Infrastructure\MeuLivroDeReceitas.Infrastructure.csproj", "{FA54A379-FEB9-43C0-8FC9-6404EF36C328}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeuLivroDeReceitas.API", "src\Backend\MeuLivroDeReceitas.API\MeuLivroDeReceitas.API.csproj", "{3339EEA8-7826-494F-992E-A7ED737FEA00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeuLivroDeReceitas.API", "src\Backend\MeuLivroDeReceitas.API\MeuLivroDeReceitas.API.csproj", "{3339EEA8-7826-494F-992E-A7ED737FEA00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Teste", "testes\Validators.Teste\Validators.Teste.csproj", "{AEB1A7A2-D523-48D7-B4F9-CFEC8EB38C77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validators.Teste", "testes\Validators.Teste\Validators.Teste.csproj", "{AEB1A7A2-D523-48D7-B4F9-CFEC8EB38C77}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseCases.Teste", "testes\UseCases.Teste\UseCases.Teste.csproj", "{D48EB3CA-E3FC-4962-BEBA-C1BABF8F0D88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Teste", "testes\WebApi.Teste\WebApi.Teste.csproj", "{5C2FD2CC-3977-4446-B2A7-8A7875890FE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Teste", "testes\WebApi.Teste\WebApi.Teste.csproj", "{5C2FD2CC-3977-4446-B2A7-8A7875890FE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilitarioParaOsTestes", "testes\UtilitarioParaOsTestes\UtilitarioParaOsTestes.csproj", "{57FCD94D-6F50-42FB-8612-E4A77BE5007B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{5C2FD2CC-3977-4446-B2A7-8A7875890FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C2FD2CC-3977-4446-B2A7-8A7875890FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C2FD2CC-3977-4446-B2A7-8A7875890FE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57FCD94D-6F50-42FB-8612-E4A77BE5007B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57FCD94D-6F50-42FB-8612-E4A77BE5007B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57FCD94D-6F50-42FB-8612-E4A77BE5007B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57FCD94D-6F50-42FB-8612-E4A77BE5007B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{AEB1A7A2-D523-48D7-B4F9-CFEC8EB38C77} = {A8AA7937-8F70-4CEE-A898-D822E26957C1}
 		{D48EB3CA-E3FC-4962-BEBA-C1BABF8F0D88} = {A8AA7937-8F70-4CEE-A898-D822E26957C1}
 		{5C2FD2CC-3977-4446-B2A7-8A7875890FE7} = {A8AA7937-8F70-4CEE-A898-D822E26957C1}
+		{57FCD94D-6F50-42FB-8612-E4A77BE5007B} = {A8AA7937-8F70-4CEE-A898-D822E26957C1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C6328A0B-AE7E-46A1-B340-11C86A0BF414}

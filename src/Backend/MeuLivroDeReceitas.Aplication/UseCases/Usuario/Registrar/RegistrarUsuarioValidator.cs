@@ -13,10 +13,15 @@ public class RegistrarUsuarioValidator:AbstractValidator<RequisicoesRegistarUsua
         RuleFor(c => c.Email).NotEmpty().WithMessage(ResourceMensagensdeErro.Email_Usuario_Embranco);
         RuleFor(c => c.Telefone).NotEmpty().WithMessage(ResourceMensagensdeErro.TELEFONE_EMBRANCO);
         RuleFor(c => c.Senha).NotEmpty().WithMessage(ResourceMensagensdeErro.SENHA_EMBRANCO);
-        RuleFor(c=>c.Senha).MinimumLength(6).WithMessage(ResourceMensagensdeErro.SENHA_INVALIDA);
+       
 
         When(c => !string.IsNullOrEmpty(c.Email), () => {
             RuleFor(c => c.Email).EmailAddress().WithMessage(ResourceMensagensdeErro.Email_INVALIDO);
+        });
+
+        When(c => !string.IsNullOrEmpty(c.Senha), () =>
+        {
+            RuleFor(c => c.Senha).MinimumLength(6).WithMessage(ResourceMensagensdeErro.SENHA_INVALIDA);
         });
 
         When(c => !string.IsNullOrEmpty(c.Telefone), () => {
