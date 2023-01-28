@@ -10,7 +10,7 @@ public class ErrosDeValidacaoException: MeuLivroDeReceitasException
 {
     public List<string> MessaErros { get; set; }
 
-    public ErrosDeValidacaoException(List<string> Erros)
+    public ErrosDeValidacaoException(List<string> Erros):base(string.Empty)
     {
         MessaErros=Erros;
     }

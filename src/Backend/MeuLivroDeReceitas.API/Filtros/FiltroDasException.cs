@@ -14,6 +14,10 @@ public class FiltroDasException : IExceptionFilter
         if(context.Exception is MeuLivroDeReceitasException)
         {
             TratarMeuLivroDeReceitaException(context);
+
+        }else if (context.Exception is LoginInvalidoException)
+        {
+            TratarLoginException(context);
         }
         else
         {
@@ -42,5 +46,12 @@ public class FiltroDasException : IExceptionFilter
     {
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
         context.Result = new ObjectResult(new RespostaErroJson(ResourceMensagensdeErro.Erro_Desconhecido));
+    }
+
+    private void TratarLoginException(ExceptionContext context)
+    {
+        var erroLogin = context.Exception as LoginInvalidoException;
+        context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+        context.Result = new ObjectResult(new RespostaErroJson(erroLogin.Message));
     }
 }

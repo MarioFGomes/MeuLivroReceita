@@ -129,6 +129,9 @@
   <data name="Erro_Desconhecido" xml:space="preserve">
     <value>Unknow Error</value>
   </data>
+  <data name="LOGIN_INVALIDO" xml:space="preserve">
+    <value>The Email end/or Passwor is Invalid</value>
+  </data>
   <data name="NOME_Usuario_Embranco" xml:space="preserve">
     <value>The user name is requerid</value>
   </data>
