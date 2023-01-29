@@ -15,9 +15,6 @@ public class FiltroDasException : IExceptionFilter
         {
             TratarMeuLivroDeReceitaException(context);
 
-        }else if (context.Exception is LoginInvalidoException)
-        {
-            TratarLoginException(context);
         }
         else
         {
@@ -30,6 +27,10 @@ public class FiltroDasException : IExceptionFilter
         if(context.Exception is ErrosDeValidacaoException)
         {
             TratarErrosDeValidacaoException(context);
+        }
+        else if (context.Exception is LoginInvalidoException)
+        {
+            TratarLoginException(context);
         }
 
     }
