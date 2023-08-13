@@ -65,7 +65,7 @@ public static class Bootstrapper
 
             services.AddDbContext<MeuLivroReceitaContext>(dbContextOptions =>
             {
-                dbContextOptions.UseMySql(conectionString, versaoServidor);
+                dbContextOptions.UseSqlServer(conectionString);
 
             });
         }

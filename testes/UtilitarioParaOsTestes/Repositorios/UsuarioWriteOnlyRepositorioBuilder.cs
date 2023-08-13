@@ -11,7 +11,7 @@ public class UsuarioWriteOnlyRepositorioBuilder
     private readonly Mock<IUsuarioWriteOnlyRepositorio> _repositorio;
 
 
-    public UsuarioWriteOnlyRepositorioBuilder()
+    private UsuarioWriteOnlyRepositorioBuilder()
     {
         if (_repositorio == null)
         {

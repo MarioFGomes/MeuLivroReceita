@@ -10,7 +10,7 @@ public class UnidadeDeTrabalhoBuilder
     private readonly Mock<IUnidadeDeTrabalho> _repositorio;
 
 
-    public UnidadeDeTrabalhoBuilder()
+    private UnidadeDeTrabalhoBuilder()
     {
         if (_repositorio == null)
         {
