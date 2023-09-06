@@ -7,8 +7,8 @@ public static class VersaoBase
         public static ICreateTableColumnOptionOrWithColumnSyntax InsarirColunasPadrao(ICreateTableWithColumnOrSchemaOrDescriptionSyntax tabela)
         {
 
-                return tabela.WithColumn("Id").AsString(1000).PrimaryKey()
+                return tabela.WithColumn("Id").AsGuid().PrimaryKey()
                          .WithColumn("DataRegisto").AsDateTime().NotNullable()
-                         .WithColumn("Status").AsBoolean().NotNullable();
+                         .WithColumn("Status").AsInt32().NotNullable();
         }
 }

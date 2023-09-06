@@ -28,7 +28,7 @@ public static class Bootstrapper
         if (!bancodeDadosInMemory) { 
             var ConectionString=
           services.AddFluentMigratorCore().ConfigureRunner(c =>
-             c.AddMySql5()
+             c.AddSqlServer()
              .WithGlobalConnectionString(configurationManager.GetConexaoCompleta()).ScanIn(Assembly.Load("MeuLivroDeReceitas.Infrastructure")).For.All());
         }
     }
@@ -60,7 +60,6 @@ public static class Bootstrapper
 
         if (!bancodeDadosInMemory)
         {
-            var versaoServidor = new MySqlServerVersion(new Version(8, 0, 28));
             var conectionString = configurationManager.GetConexaoCompleta();
 
             services.AddDbContext<MeuLivroReceitaContext>(dbContextOptions =>

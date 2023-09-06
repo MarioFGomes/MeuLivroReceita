@@ -30,6 +30,6 @@ public class UsuarioRepositorio : IUsuarioReadOnlyRepositorio, IUsuarioWriteOnly
     public async Task<Usuario> Login(string email, string senha)
     {
         return await _contexto.usuarios.AsNoTracking()
-            .FirstOrDefaultAsync(c => c.Email.Equals(email) && c.Senha.Equals(senha));
+            .SingleOrDefaultAsync(c => c.Email.Equals(email) && c.Senha.Equals(senha));
     }
 }
