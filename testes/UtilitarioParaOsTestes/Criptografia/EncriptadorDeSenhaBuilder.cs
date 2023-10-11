@@ -9,7 +9,7 @@ public class EncriptadorDeSenhaBuilder
     
     public static EncriptadorDeSenha Instancia()
     {
-        _Instancia = new EncriptadorDeSenha("NovaSenhawww");
+        _Instancia = new EncriptadorDeSenha("4$!zIsSxp13EUS25");
         return _Instancia;
     }
 }

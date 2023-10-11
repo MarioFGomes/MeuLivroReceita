@@ -11,7 +11,7 @@ using Xunit;
 
 namespace UseCases.Teste.Usuario.Registrar;
 
-public class RegistrarUsuarioUsaseCasaTest
+public class RegistrarUsuarioUsaseCaseTest
 {
     [Fact]
     public async Task Validar_Sucesso()

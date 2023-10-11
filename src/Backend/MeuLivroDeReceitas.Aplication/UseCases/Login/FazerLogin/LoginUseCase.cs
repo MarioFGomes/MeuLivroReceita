@@ -1,5 +1,4 @@
 ﻿
-
 using MeuLivroDeReceitas.Aplication.Servicos.Criptografia;
 using MeuLivroDeReceitas.Aplication.Servicos.Token;
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
