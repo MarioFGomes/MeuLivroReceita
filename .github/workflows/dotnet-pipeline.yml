@@ -35,5 +35,5 @@ jobs:
 
     - name: Build and Publish Docker Image
       run: |
-        docker build -t mariogomes333/meulivroreceitas:${{ github.sha }} .
+        docker build -t mariogomes333/meulivroreceitas:latest .
         docker push mariogomes333/meulivroreceitas:latest
