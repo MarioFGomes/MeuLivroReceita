@@ -1,6 +1,8 @@
 ﻿using MeuLivroDeReceitas.Aplication.Servicos.Criptografia;
 using MeuLivroDeReceitas.Aplication.Servicos.Token;
+using MeuLivroDeReceitas.Aplication.Servicos.UserLogado;
 using MeuLivroDeReceitas.Aplication.UseCases.Login.FazerLogin;
+using MeuLivroDeReceitas.Aplication.UseCases.Usuario.AlterarSenha;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.Registrar;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +43,8 @@ public static class Bootstrapper
     private static void RegistrarUsuario(IServiceCollection service)
     {
         service.AddScoped<IRegistrarUsuarioUseCase, RegistrarUsuarioUseCase>()
-               .AddScoped<ILoginUseCase, LoginUseCase>();
+               .AddScoped<ILoginUseCase, LoginUseCase>()
+               .AddScoped<IAlterarSenhaUseCase, AlterarSenhaUseCase>()
+               .AddScoped<IUsuarioLogado, UsuarioLogado>();
     }
 }
