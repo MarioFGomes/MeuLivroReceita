@@ -41,7 +41,7 @@ public class TokenController
         return new SymmetricSecurityKey(symmetrickey);
     }
 
-    public void ValidarToken(string Token)
+    public ClaimsPrincipal ValidarToken(string Token)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var parametrosValidacao = new TokenValidationParameters
@@ -52,7 +52,14 @@ public class TokenController
             ValidateIssuer = false,
             ValidateAudience = false,
         };
-        tokenHandler.ValidateToken(Token, parametrosValidacao, out _);
+        return tokenHandler.ValidateToken(Token, parametrosValidacao, out _);
+    }
+
+    public string RecuperarEmail(string token)
+    {
+        var claims = ValidarToken(token);
+
+        return claims.FindFirst(EmailAlias).Value;
     }
 
 }

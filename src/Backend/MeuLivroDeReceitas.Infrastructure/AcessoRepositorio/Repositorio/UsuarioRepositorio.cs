@@ -33,6 +33,12 @@ public class UsuarioRepositorio : IUsuarioReadOnlyRepositorio, IUsuarioWriteOnly
             .SingleOrDefaultAsync(c => c.Email.Equals(email) && c.Senha.Equals(senha));
     }
 
+    public async Task<Usuario> RecuperarPorEmail(string email)
+    {
+        return await _contexto.usuarios
+            .SingleOrDefaultAsync(c => c.Email.Equals(email));
+    }
+
     public void Update(Usuario usuario)
     {
         _contexto.usuarios.Update(usuario);

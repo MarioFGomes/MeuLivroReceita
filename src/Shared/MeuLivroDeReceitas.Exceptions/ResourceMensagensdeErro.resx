@@ -135,6 +135,9 @@
   <data name="NOME_Usuario_Embranco" xml:space="preserve">
     <value>O Nome do usuário deve ser informado</value>
   </data>
+  <data name="SenhaAtual_Invalida" xml:space="preserve">
+    <value>A senha Atual é Invalida</value>
+  </data>
   <data name="SENHA_EMBRANCO" xml:space="preserve">
     <value>A senha deve ser informada</value>
   </data>
@@ -146,5 +149,11 @@
   </data>
   <data name="TELEFONE_INVALIDO" xml:space="preserve">
     <value>O Telefone informado é Inválido</value>
+  </data>
+  <data name="TokenExpirado" xml:space="preserve">
+    <value>Ups! o Token Expirou volte a fazer login na Aplicação</value>
+  </data>
+  <data name="Usuario_Sem_Permissao" xml:space="preserve">
+    <value>Você não tem permissão para fazer está ação</value>
   </data>
 </root>

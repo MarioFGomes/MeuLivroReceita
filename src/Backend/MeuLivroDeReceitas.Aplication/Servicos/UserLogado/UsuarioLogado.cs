@@ -1,5 +1,6 @@
 ﻿using MeuLivroDeReceitas.Aplication.Servicos.Token;
 using MeuLivroDeReceitas.Domain.Entidade;
+using MeuLivroDeReceitas.Domain.Repositorios.Usuario;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -13,15 +14,21 @@ internal class UsuarioLogado : IUsuarioLogado
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
     private readonly TokenController _tokenController;
-    public UsuarioLogado(IHttpContextAccessor httpContextAccesor, TokenController tokenController)
+    private readonly IUsuarioReadOnlyRepositorio _readOnlyRepositorio;
+    public UsuarioLogado(IHttpContextAccessor httpContextAccesor, TokenController tokenController, IUsuarioReadOnlyRepositorio usuarioReadOnly)
     {
         _httpContextAccessor= httpContextAccesor;
         _tokenController= tokenController;
+        _readOnlyRepositorio= usuarioReadOnly;
     }
     public async Task<Usuario> RecuperarUsuario()
     {
         var authorization=_httpContextAccessor.HttpContext.Request.Headers["Authorization"].ToString();
+        var token = authorization["Bearer".Length..].Trim();
+        var EmialUsuario=_tokenController.RecuperarEmail(token);
 
-        throw new NotImplementedException();
+        var user = await _readOnlyRepositorio.RecuperarPorEmail(EmialUsuario);
+
+        return user;
     }
 }
