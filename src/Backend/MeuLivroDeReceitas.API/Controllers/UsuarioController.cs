@@ -1,5 +1,6 @@
 using MeuLivroDeReceitas.API.Filtros;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.AlterarSenha;
+using MeuLivroDeReceitas.Aplication.UseCases.Usuario.RecuperarSenha;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.Registrar;
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
 using MeuLivroDeReceitas.Comunicacao.Respostas;
@@ -30,6 +31,16 @@ namespace MeuLivroDeReceitas.API.Controllers
            await useCase.Executar(request);
 
             return NoContent();
+        }
+
+        [HttpPost]
+        [Route("recuperar-senha")]
+        [ProducesResponseType(typeof(RespostaVarificationCode),StatusCodes.Status200OK)]
+        public async Task<IActionResult> RecuperarSenha([FromServices] IRecuperarSenhaUseCase useCase, [FromBody] RequesicaoRecuperarSenha requisicao)
+        {
+            var resultado = await useCase.Executar(requisicao.Email);
+
+            return Ok(resultado);
         }
 
 
