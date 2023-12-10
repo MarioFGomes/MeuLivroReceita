@@ -8,11 +8,11 @@ namespace MeuLivroDeReceitas.Exceptions.ExceptionsBase;
 
 public class ErrosDeValidacaoException: MeuLivroDeReceitasException
 {
-    public List<string> MessaErros { get; set; }
+    public List<string> MessagesErros { get; set; }
 
     public ErrosDeValidacaoException(List<string> Erros):base(string.Empty)
     {
-        MessaErros=Erros;
+        MessagesErros = Erros;
     }
 
 }

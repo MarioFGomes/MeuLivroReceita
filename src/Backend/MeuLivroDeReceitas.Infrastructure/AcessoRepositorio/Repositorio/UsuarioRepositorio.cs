@@ -39,6 +39,12 @@ public class UsuarioRepositorio : IUsuarioReadOnlyRepositorio, IUsuarioWriteOnly
             .SingleOrDefaultAsync(c => c.Email.Equals(email));
     }
 
+    public async Task<Usuario> RecuperarPorId(Guid Id)
+    {
+        return await _contexto.usuarios
+           .SingleOrDefaultAsync(c => c.Email.Equals(Id));
+    }
+
     public void Update(Usuario usuario)
     {
         _contexto.usuarios.Update(usuario);

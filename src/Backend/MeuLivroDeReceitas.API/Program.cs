@@ -1,4 +1,5 @@
 using MeuLivroDeReceitas.API.Filtros;
+using MeuLivroDeReceitas.API.Middleware;
 using MeuLivroDeReceitas.Aplication;
 using MeuLivroDeReceitas.Aplication.Servicos.Automapper;
 using MeuLivroDeReceitas.Domain.Extension;
@@ -44,6 +45,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 AtualizarDataBase();
+
+app.UseMiddleware<CultureMiddleware>();
 
 app.Run();
 

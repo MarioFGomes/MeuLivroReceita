@@ -35,7 +35,7 @@ public class RegistrarUsuarioUsaseCaseTest
 
         await acao.Should().ThrowAsync<ErrosDeValidacaoException>()
             
-            .Where(exception => exception.MessaErros.Count == 1 && exception.MessaErros.Contains(ResourceMensagensdeErro.Email_Já_Registrado));
+            .Where(exception => exception.MessagesErros.Count == 1 && exception.MessagesErros.Contains(ResourceMensagensdeErro.Email_Já_Registrado));
     }
 
     #endregion
@@ -55,7 +55,7 @@ public class RegistrarUsuarioUsaseCaseTest
 
         await acao.Should().ThrowAsync<ErrosDeValidacaoException>()
 
-        .Where(exception => exception.MessaErros.Count == 1 && exception.MessaErros.Contains(ResourceMensagensdeErro.Email_Usuario_Embranco));
+        .Where(exception => exception.MessagesErros.Count == 1 && exception.MessagesErros.Contains(ResourceMensagensdeErro.Email_Usuario_Embranco));
     }
 
     #endregion

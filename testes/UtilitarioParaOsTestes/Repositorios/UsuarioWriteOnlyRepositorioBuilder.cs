@@ -7,7 +7,7 @@ public class UsuarioWriteOnlyRepositorioBuilder
 {
     private static UsuarioWriteOnlyRepositorioBuilder _instancia;
     private readonly Mock<IUsuarioWriteOnlyRepositorio> _repositorio;
-
+    private readonly Mock<IUsuarioReadOnlyRepositorio> _repositorioread=new Mock<IUsuarioReadOnlyRepositorio>();
 
     private UsuarioWriteOnlyRepositorioBuilder()
     {
@@ -21,6 +21,12 @@ public class UsuarioWriteOnlyRepositorioBuilder
         _instancia = new UsuarioWriteOnlyRepositorioBuilder();
 
         return _instancia;
+    }
+
+    public UsuarioWriteOnlyRepositorioBuilder RecuperarPorId(MeuLivroDeReceitas.Domain.Entidade.Usuario usuario)
+    {
+        _repositorioread.Setup(c => c.RecuperarPorId(usuario.Id)).ReturnsAsync(usuario);
+        return this;
     }
 
     public IUsuarioWriteOnlyRepositorio Construir()

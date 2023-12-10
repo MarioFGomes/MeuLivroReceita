@@ -1,5 +1,6 @@
 ﻿using MeuLivroDeReceitas.Aplication.Servicos.utilities;
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
+using MeuLivroDeReceitas.Comunicacao.Respostas;
 using MeuLivroDeReceitas.Domain.Repositorios.Usuario;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,18 @@ public class RecuperarSenhaUseCase : IRecuperarSenhaUseCase
     {
         _usuarioReadOnlyRepositorio = usuarioReadOnlyRepositorio;
     }
-    public async Task<string> Executar(string email)
+    public async Task<RespostaVarificationCode> Executar(string email)
     {
         var result=await _usuarioReadOnlyRepositorio.RecuperarPorEmail(email);
         if (result is null) throw new Exception("usuario não existe");
 
-        return VerificationCodeGenerete.Generate();
+        return new RespostaVarificationCode
+        {
+
+            Codigo = VerificationCodeGenerete.Generate()
+
+        };
+               
+ 
     }
 }

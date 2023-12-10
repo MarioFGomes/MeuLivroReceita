@@ -1,9 +1,9 @@
 ﻿using MeuLivroDeReceitas.Comunicacao.Requisicoes;
-
+using MeuLivroDeReceitas.Comunicacao.Respostas;
 
 namespace MeuLivroDeReceitas.Aplication.UseCases.Usuario.RecuperarSenha;
 
 public interface IRecuperarSenhaUseCase
 {
-    Task<string> Executar(string email);
+    Task<RespostaVarificationCode> Executar(string email);
 }

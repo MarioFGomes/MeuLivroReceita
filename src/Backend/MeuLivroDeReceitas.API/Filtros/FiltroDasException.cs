@@ -40,7 +40,7 @@ public class FiltroDasException : IExceptionFilter
         var erroDeValidacao=context.Exception as ErrosDeValidacaoException;
 
         context.HttpContext.Response.StatusCode=(int)HttpStatusCode.BadRequest;
-        context.Result = new ObjectResult(new RespostaErroJson(erroDeValidacao.MessaErros));
+        context.Result = new ObjectResult(new RespostaErroJson(erroDeValidacao.MessagesErros));
     }
 
     private void LancarErroDesconhecido(ExceptionContext context)
