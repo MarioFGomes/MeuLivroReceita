@@ -50,13 +50,14 @@ public class AlterarSenhaUseCaseTest
         .Where(ex => ex.MessagesErros.Count == 1 && ex.MessagesErros.Contains(ResourceMensagensdeErro.SENHA_EMBRANCO));
     }
 
+ 
     [Theory]
     [InlineData(1)]
     [InlineData(2)]
     [InlineData(3)]
     [InlineData(4)]
     [InlineData(5)]
-    public async void ValidarErroSenhaAtualInvalida(int tamanhoSenha)
+    public async void ValidarErroSenhaAtualMinimoCaracter(int tamanhoSenha)
     {
         (var usuario, var senha) = UsuarioBuilder.Contruir();
         var UseCase = CriarUseCase(usuario);
@@ -70,7 +71,7 @@ public class AlterarSenhaUseCaseTest
         .Where(ex => ex.MessagesErros.Count == 1 && ex.MessagesErros.Contains(ResourceMensagensdeErro.SENHA_INVALIDA));
     }
 
-    private AlterarSenhaUseCase CriarUseCase(MeuLivroDeReceitas.Domain.Entidade.Usuario usuario)
+    private static AlterarSenhaUseCase CriarUseCase(MeuLivroDeReceitas.Domain.Entidade.Usuario usuario)
     {
         var repositorio = UsuarioWriteOnlyRepositorioBuilder.Instancia().RecuperarPorId(usuario).Construir();
         var EncripitadorSenha = EncriptadorDeSenhaBuilder.Instancia();

@@ -24,7 +24,7 @@ public static class Bootstrapper
 
     private static void AddFluentMigrator(IServiceCollection services, IConfiguration configurationManager)
     {
-        bool.TryParse(configurationManager.GetSection("Configuracoes:BancodeDadosInMemory").Value, out bool bancodeDadosInMemory);
+        _ =  bool.TryParse(configurationManager.GetSection("Configuracoes:BancodeDadosInMemory").Value, out bool bancodeDadosInMemory);
 
         if (!bancodeDadosInMemory) { 
             var ConectionString=
@@ -57,7 +57,7 @@ public static class Bootstrapper
 
     private static void AddContexto(IServiceCollection services, IConfiguration configurationManager)
     {
-        bool.TryParse( configurationManager.GetSection("Configuracoes:BancodeDadosInMemory").Value,out bool bancodeDadosInMemory);
+        _= bool.TryParse( configurationManager.GetSection("Configuracoes:BancodeDadosInMemory").Value,out bool bancodeDadosInMemory);
 
         if (!bancodeDadosInMemory)
         {

@@ -17,8 +17,8 @@ public class AlterarSenhaTeste: ControllerBase
 
 {
     private const string _Metodo = "api/Usuario/alterar-senha";
-    private MeuLivroDeReceitas.Domain.Entidade.Usuario _usuario;
-    private string _senha;
+    private readonly MeuLivroDeReceitas.Domain.Entidade.Usuario _usuario;
+    private readonly string _senha;
     public AlterarSenhaTeste(MeuLivroReceitasWebApplicationFactory<Program> factory) : base(factory)
     {
         _usuario = factory.RecuperarUsuario();

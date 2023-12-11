@@ -93,7 +93,7 @@ public class LoginUseCaseTest
             .Where(exception => exception.Message.Equals(ResourceMensagensdeErro.LOGIN_INVALIDO));
     }
 
-    private LoginUseCase CriarUseCase(MeuLivroDeReceitas.Domain.Entidade.Usuario usuario)
+    private static LoginUseCase CriarUseCase(MeuLivroDeReceitas.Domain.Entidade.Usuario usuario)
     {
         var EncriptadorSenha = EncriptadorDeSenhaBuilder.Instancia();
         var Token = TokenBuilder.Instancia();

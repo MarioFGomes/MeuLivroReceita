@@ -2,6 +2,7 @@
 using MeuLivroDeReceitas.Comunicacao.Respostas;
 using MeuLivroDeReceitas.Domain.Repositorios.Usuario;
 using MeuLivroDeReceitas.Exceptions;
+using MeuLivroDeReceitas.Exceptions.ExceptionsBase;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -26,10 +27,9 @@ public class AuthenticatedUser : AuthorizeAttribute, IAsyncAuthorizationFilter
 
             var UserEmail = _tokenController.RecuperarEmail(token);
 
-            var User = _readOnlyRepositorio.RecuperarPorEmail(UserEmail);
-
-            if (User is null) throw new System.Exception();
-        }catch (SecurityTokenExpiredException)
+            var User = _readOnlyRepositorio.RecuperarPorEmail(UserEmail) ?? throw new MeuLivroDeReceitasException(string.Empty);
+        }
+        catch (SecurityTokenExpiredException)
         {
             TokenExpirado(context);
         }
@@ -39,21 +39,21 @@ public class AuthenticatedUser : AuthorizeAttribute, IAsyncAuthorizationFilter
         }
     }
 
-    private string RequestToken(AuthorizationFilterContext context)
+    private static string RequestToken(AuthorizationFilterContext context)
     {
         var authorization = context.HttpContext.Request.Headers["Authorization"].ToString();
-        if (string.IsNullOrWhiteSpace(authorization)) throw new System.Exception();
+        if (string.IsNullOrWhiteSpace(authorization)) throw new MeuLivroDeReceitasException(string.Empty);
 
           return  authorization["Bearer".Length..].Trim();
         
     }
 
-    private void TokenExpirado(AuthorizationFilterContext context)
+    private static void TokenExpirado(AuthorizationFilterContext context)
     {
         context.Result = new UnauthorizedObjectResult(new RespostaErroJson(ResourceMensagensdeErro.TokenExpirado));
     }
 
-    private void UsuarioUnauthorized(AuthorizationFilterContext context)
+    private static void UsuarioUnauthorized(AuthorizationFilterContext context)
     {
         context.Result = new UnauthorizedObjectResult(new RespostaErroJson(ResourceMensagensdeErro.Usuario_Sem_Permissao));
     }

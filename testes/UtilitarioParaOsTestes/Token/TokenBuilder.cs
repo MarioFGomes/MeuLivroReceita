@@ -11,7 +11,13 @@ public class TokenBuilder
 
     public static TokenController Instancia()
     {
-        _Instancia = new TokenController(1000, "Kno3WTcxdDJXeXBUdk5CcUk3IVFwRXhyTlE1WEVp");
+        _Instancia = new TokenController(1000, "cUNGSE9aRTIqNHc1WThYZm55aTUjJDZtQ0ByMU5xRjJUMjEhSjEqVW41aGlnVg==");
+        return _Instancia;
+    }
+
+    public static TokenController TokenExpirado()
+    {
+        _Instancia = new TokenController(0.0166667, "cUNGSE9aRTIqNHc1WThYZm55aTUjJDZtQ0ByMU5xRjJUMjEhSjEqVW41aGlnVg==");
         return _Instancia;
     }
 }
