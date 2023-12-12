@@ -7,6 +7,7 @@ public class EntidadeBase
     public Guid Id { get; set; }
     public DateTime DataRegisto { get; set; }
     public int Status { get; set; }
+    public DateTime Lastupdate { get; set; }
 
     public EntidadeBase()
     {
