@@ -33,6 +33,18 @@ namespace MeuLivroDeReceitas.API.Controllers
             return NoContent();
         }
 
+
+        [HttpPut]
+        [Route("alterar-foto")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ServiceFilter(typeof(AuthenticatedUser))]
+        public async Task<IActionResult> AlterarFotoPerfil([FromServices] IAlterarSenhaUseCase useCase, [FromBody] RequisicaoAlterarSenha request)
+        {
+            await useCase.Executar(request);
+
+            return NoContent();
+        }
+
         [HttpPost]
         [Route("recuperar-senha")]
         [ProducesResponseType(typeof(RespostaVarificationCode),StatusCodes.Status200OK)]

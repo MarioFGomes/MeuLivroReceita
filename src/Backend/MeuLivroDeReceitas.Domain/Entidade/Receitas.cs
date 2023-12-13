@@ -14,5 +14,5 @@ public class Receitas: EntidadeBase
     public Guid UsuerID { get; set; }
     public string Categoria { get; set; }
     public bool Ispublic { get; set; }
-    public List<ReceitaFoto> RecitaFotos=new();
+    public List<ReceitaImagem> RecitaFotos=new();
 }

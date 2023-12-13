@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace MeuLivroDeReceitas.Domain.Entidade; 
 public class Followers: EntidadeBase 
 {
-    public Guid UserID { get; set; }
-    public Guid seguidorID { get; set; }
+    public Guid usuarioId { get; set; }
+    public Guid seguidorId { get; set; }
+    public Usuario usuario { get; set; }
+    public Usuario seguidor { get; set; }
 }

@@ -9,6 +9,7 @@ public static class VersaoBase
 
                 return tabela.WithColumn("Id").AsGuid().PrimaryKey()
                          .WithColumn("DataRegisto").AsDateTime().NotNullable()
+                         .WithColumn("LastUpdate").AsDateTime().NotNullable()
                          .WithColumn("Status").AsInt32().NotNullable();
         }
 }

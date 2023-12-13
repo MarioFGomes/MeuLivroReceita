@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Enumeration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MeuLivroDeReceitas.Domain.Entidade; 
-public class Following: EntidadeBase 
+public class UsuarioImagem: EntidadeBase 
 {
     public Guid usuarioId { get; set; }
-    public Guid seguidoId { get; set; }
+    public string Originalname { get; set; }
+    public string Filename { get; set; }
+    public string Description { get; set; }
+    public string Url { get; set; }
     public Usuario usuario { get; set; }
-    public Usuario seguido { get; set; }
 }

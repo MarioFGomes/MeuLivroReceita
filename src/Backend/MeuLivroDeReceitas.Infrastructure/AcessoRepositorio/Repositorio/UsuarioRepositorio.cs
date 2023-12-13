@@ -41,8 +41,8 @@ public class UsuarioRepositorio : IUsuarioReadOnlyRepositorio, IUsuarioWriteOnly
 
     public async Task<Usuario> RecuperarPorId(Guid Id)
     {
-        return await _contexto.usuarios
-           .SingleOrDefaultAsync(c => c.Email.Equals(Id));
+        return await _contexto.usuarios.Include(e => e.Imagens).Include(e => e.ListSeguidores).Include(e => e.ListSeguindo)
+            .SingleOrDefaultAsync(c => c.Id.Equals(Id));
     }
 
     public void Update(Usuario usuario)
