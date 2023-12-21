@@ -66,6 +66,7 @@ public static class Bootstrapper
             services.AddDbContext<MeuLivroReceitaContext>(dbContextOptions =>
             {
                 dbContextOptions.UseSqlServer(conectionString);
+                dbContextOptions.UseLazyLoadingProxies();
 
             });
         }

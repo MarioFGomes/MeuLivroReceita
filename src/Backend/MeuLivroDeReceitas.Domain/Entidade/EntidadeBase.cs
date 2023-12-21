@@ -1,5 +1,8 @@
 ﻿
 
+using MeuLivroDeReceitas.Domain.Enum;
+using MeuLivroDeReceitas.Domain.Enums;
+
 namespace MeuLivroDeReceitas.Domain.Entidade;
 
 public class EntidadeBase
@@ -14,6 +17,6 @@ public class EntidadeBase
         Id=Guid.NewGuid();
         DataRegisto = DateTime.UtcNow;
         LastUpdate= DateTime.UtcNow;
-        Status =1;
+        Status = (int)BaseStatus.Created;
     }
 }

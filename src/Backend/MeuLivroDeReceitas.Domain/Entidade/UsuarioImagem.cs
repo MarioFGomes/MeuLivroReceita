@@ -13,5 +13,4 @@ public class UsuarioImagem: EntidadeBase
     public string Filename { get; set; }
     public string Description { get; set; }
     public string Url { get; set; }
-    public Usuario usuario { get; set; }
 }

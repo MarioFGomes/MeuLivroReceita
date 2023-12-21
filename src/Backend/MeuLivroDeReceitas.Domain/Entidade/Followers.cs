@@ -9,6 +9,4 @@ public class Followers: EntidadeBase
 {
     public Guid usuarioId { get; set; }
     public Guid seguidorId { get; set; }
-    public Usuario usuario { get; set; }
-    public Usuario seguidor { get; set; }
 }

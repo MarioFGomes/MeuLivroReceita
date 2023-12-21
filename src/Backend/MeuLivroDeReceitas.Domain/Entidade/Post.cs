@@ -14,6 +14,6 @@ public class Post
     public Guid UserID { get; set; }
     public DateTime CreatedDate { get; set;}
     public DateTime UpdatedDate { get; set; }
-    public List<PostComments> comments { get; set; }=new();
-    public List<PostLikes> Likes { get; set; }=new();
+    public virtual List<PostComments> comments { get; set; }=new();
+    public virtual List<PostLikes> Likes { get; set; }=new();
 }
