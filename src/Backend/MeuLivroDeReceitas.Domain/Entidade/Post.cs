@@ -16,5 +16,20 @@ public class Post
     public DateTime CreatedDate { get; set;}
     public DateTime UpdatedDate { get; set; }
     public virtual List<PostComments> comments { get; set; }=new();
-    public virtual List<PostLikes> Likes { get; set; }=new();
+    public virtual List<PostReactions> reactions { get; set; }=new();
+    public virtual List<PostFile> files { get; set; } = new();
+    public int NumeroComentarios 
+    { 
+        get
+        {
+          return comments.Count;
+    }   }
+
+    public int Numeroreactions
+    {
+        get
+        {
+           return reactions.Count;
+        }
+    }
 }
