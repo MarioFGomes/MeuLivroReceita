@@ -11,7 +11,8 @@ public class Post
     public string Tipo { get; set; }
     public string Conteudo { get; set; }
     public string Legenda { get; set; }
-    public Guid UserID { get; set; }
+    public Guid authorId { get; set; }
+    public Usuario author { get; set; }
     public DateTime CreatedDate { get; set;}
     public DateTime UpdatedDate { get; set; }
     public virtual List<PostComments> comments { get; set; }=new();
