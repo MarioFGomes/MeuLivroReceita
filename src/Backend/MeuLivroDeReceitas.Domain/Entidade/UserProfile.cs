@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeuLivroDeReceitas.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ public class UserProfile:EntidadeBase
     public string Bio { get; set; }
     public Usuario usuario { get; set; }
     public Guid usuarioId { get; set; }
+    public ProfileStatus Type { get; set; }
     public int NumeroSeguidores 
     { 
         get

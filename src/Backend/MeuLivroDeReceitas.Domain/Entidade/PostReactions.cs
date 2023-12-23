@@ -6,12 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MeuLivroDeReceitas.Domain.Entidade; 
-public class PostReactions 
+public class PostReactions: EntidadeBase
 {
-    public Guid Id {  get; set; }
     public Guid PostID { get; set; }
     public Guid UserID { get; set; }
     public ReactionsTypes Types { get; set; }
-    public DateTime DataRegistro { get; set; }
-    public DateTime UpdatedDate { get; set; }
 }

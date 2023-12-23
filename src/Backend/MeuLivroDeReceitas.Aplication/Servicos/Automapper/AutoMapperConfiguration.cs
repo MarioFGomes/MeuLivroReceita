@@ -15,6 +15,8 @@ namespace MeuLivroDeReceitas.Aplication.Servicos.Automapper
         {
             CreateMap<RequisicoesRegistarUsuarioJson, Usuario>()
             .ForMember(destino=>destino.Senha,config=>config.Ignore());
+
+            CreateMap<RequisicaoRegistrarProfile, UserProfile>();
         }
     }
 }

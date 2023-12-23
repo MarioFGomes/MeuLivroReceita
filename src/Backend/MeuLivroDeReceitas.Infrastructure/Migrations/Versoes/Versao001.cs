@@ -20,12 +20,18 @@ public class Versao001 : Migration
               .WithColumn("Nome").AsString(100).NotNullable()
               .WithColumn("Email").AsString(150).NotNullable()
               .WithColumn("Senha").AsString(2000).NotNullable()
-              .WithColumn("Telefone").AsString(50).NotNullable()
+              .WithColumn("Telefone").AsString(50).NotNullable();
+              
+
+        var Perfil = VersaoBase.InsarirColunasPadrao(Create.Table("Perfil"));
+
+        Perfil
+              .WithColumn("Description").AsString(2000).Nullable()
               .WithColumn("Avatar_url").AsString(2000).Nullable()
               .WithColumn("About").AsString(1000).Nullable()
               .WithColumn("Location").AsString(200).Nullable()
               .WithColumn("Bio").AsString(200).Nullable()
-              .WithColumn("Perfilpublico").AsBoolean().Nullable();
+              .WithColumn("Type").AsInt32().Nullable();
 
 
         var UsuarioImagens = VersaoBase.InsarirColunasPadrao(Create.Table("UsuarioImagens"));

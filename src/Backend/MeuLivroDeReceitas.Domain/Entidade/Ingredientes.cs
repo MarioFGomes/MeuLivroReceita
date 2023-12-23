@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MeuLivroDeReceitas.Domain.Entidade;
-public class PostFile:EntidadeBase
+public class Ingredientes:EntidadeBase
 {
-    public string Originalname { get; set; }
-    public string filename { get; set; }
+    public string Nome { get; set; }
+    public decimal Quantidade { get; set; }
     public string description { get; set; }
-    public string url { get; set; }
+    public string pesograma { get; set; }
 }

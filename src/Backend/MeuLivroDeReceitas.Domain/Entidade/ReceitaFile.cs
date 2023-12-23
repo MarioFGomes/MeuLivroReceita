@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MeuLivroDeReceitas.Domain.Entidade; 
-public class ReceitaImagem: EntidadeBase 
+public class ReceitaFile: EntidadeBase 
 {
     public Guid ReceitaID { get; set; }
     public string Originalname { get; set; }

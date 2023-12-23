@@ -41,7 +41,7 @@ public class UsuarioRepositorio : IUsuarioReadOnlyRepositorio, IUsuarioWriteOnly
 
     public async Task<Usuario> RecuperarPorId(Guid Id)
     {
-        return await _contexto.usuarios.Include(e => e.Imagens).Include(e => e.Seguidores).Include(e => e.Seguindo)
+        return await _contexto.usuarios.Include(e => e.Imagens).Include(e => e.Seguidores).Include(e => e.Seguindo).Include(e => e.profile)
             .SingleOrDefaultAsync(c => c.Id.Equals(Id));
     }
 

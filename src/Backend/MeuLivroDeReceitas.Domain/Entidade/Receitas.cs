@@ -10,11 +10,11 @@ public class Receitas: EntidadeBase
     public string Titulo { get; set; } 
     public string Descricao { get; set; }
 
-    public List<string> Ingredientes = new();
+    public List<Ingredientes> Ingredientes = new();
     public string ModoPreparo { get; set; }
     public Guid UsuerID { get; set; }
     public string Categoria { get; set; }
     public bool Ispublic { get; set; }
 
-    public List<ReceitaImagem> RecitaFotos=new();
+    public List<ReceitaFile> RecitaFotos=new();
 }

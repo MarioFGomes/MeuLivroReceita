@@ -4,29 +4,25 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MeuLivroDeReceitas.Infrastructure.Configurations;
-public class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
+public class PostConfiguration : IEntityTypeConfiguration<Post>
 {
-    public void Configure(EntityTypeBuilder<Usuario> builder)
+    public void Configure(EntityTypeBuilder<Post> builder)
     {
-        builder.HasMany(u => u.Seguidores)
-              .WithOne()
-              .OnDelete(DeleteBehavior.NoAction);
+        builder.HasMany(u => u.comments)
+            .WithOne()
+            .OnDelete(DeleteBehavior.NoAction);
 
-        builder.HasMany(u => u.Seguindo)
+        builder.HasMany(u => u.reactions)
                .WithOne()
               .OnDelete(DeleteBehavior.NoAction);
 
-        builder.HasMany(u => u.Imagens)
+        builder.HasMany(u => u.files)
               .WithOne()
              .OnDelete(DeleteBehavior.NoAction);
 
-        builder.HasMany(u => u.Posts)
-             .WithOne()
-            .OnDelete(DeleteBehavior.NoAction);
     }
 }

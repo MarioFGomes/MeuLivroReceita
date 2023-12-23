@@ -1,6 +1,7 @@
 ﻿using FluentMigrator.Runner;
 using MeuLivroDeReceitas.Domain.Extension;
 using MeuLivroDeReceitas.Domain.Repositorios;
+using MeuLivroDeReceitas.Domain.Repositorios.Profile;
 using MeuLivroDeReceitas.Domain.Repositorios.Usuario;
 using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio;
 using MeuLivroDeReceitas.Infrastructure.AcessoRepositorio.Repositorio;
@@ -45,8 +46,10 @@ public static class Bootstrapper
     private static void AddRepositorios(IServiceCollection services)
     {
         services.AddScoped<IUsuarioReadOnlyRepositorio, UsuarioRepositorio>()
-                .AddScoped<IUsuarioWriteOnlyRepositorio, UsuarioRepositorio>();
-        
+                .AddScoped<IUsuarioWriteOnlyRepositorio, UsuarioRepositorio>()
+                .AddScoped<IProfileWriteOnlyRepositorio, ProfileRepositorio>()
+                .AddScoped<IProfileReadOnlyRepositorio, ProfileRepositorio>();
+
     }
 
     private static void AddUnidadeDeTrabalho(IServiceCollection services)
