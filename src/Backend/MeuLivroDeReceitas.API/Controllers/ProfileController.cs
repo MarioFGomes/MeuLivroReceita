@@ -25,4 +25,13 @@ public class ProfileController: MeuLivroDeReceitaController
 
         return Ok();
     }
+
+    [HttpPut]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> AdicionarFotoProfile(Guid Id)
+    {
+        //var resultado = await useCase.Executar(request);
+
+        return Ok();
+    }
 }

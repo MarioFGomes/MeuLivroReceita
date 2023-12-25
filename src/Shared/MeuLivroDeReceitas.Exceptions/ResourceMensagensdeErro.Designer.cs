@@ -169,6 +169,15 @@ namespace MeuLivroDeReceitas.Exceptions {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a É necessário fornecer um usuário.
+        /// </summary>
+        public static string Usuario_Não_Defenido {
+            get {
+                return ResourceManager.GetString("Usuario_Não_Defenido", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Você não tem permissão para fazer está ação.
         /// </summary>
         public static string Usuario_Sem_Permissao {

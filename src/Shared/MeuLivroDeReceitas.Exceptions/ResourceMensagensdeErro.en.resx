@@ -150,6 +150,9 @@
   <data name="TokenExpirado" xml:space="preserve">
     <value>Oops! the Token has expired, log back into the Application</value>
   </data>
+  <data name="Usuario_Não_Defenido" xml:space="preserve">
+    <value>You must provide a user</value>
+  </data>
   <data name="Usuario_Sem_Permissao" xml:space="preserve">
     <value>You are not allowed to do this action</value>
   </data>

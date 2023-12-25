@@ -13,5 +13,4 @@ public class RequisicaoRegistrarProfile
     public string Location { get; set; }
     public string Bio { get; set; }
     public Guid usuarioId { get; set; }
-    public int Type { get; set; }
 }

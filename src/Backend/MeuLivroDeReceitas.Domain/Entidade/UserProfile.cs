@@ -15,7 +15,7 @@ public class UserProfile:EntidadeBase
     public string Bio { get; set; }
     public Usuario usuario { get; set; }
     public Guid usuarioId { get; set; }
-    public ProfileStatus Type { get; set; }
+    public ProfileStatus Type { get; set; } = ProfileStatus.publico;
     public int NumeroSeguidores 
     { 
         get

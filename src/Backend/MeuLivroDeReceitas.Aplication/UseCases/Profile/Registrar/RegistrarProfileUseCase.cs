@@ -3,8 +3,10 @@ using MeuLivroDeReceitas.Comunicacao.Requisicoes;
 using MeuLivroDeReceitas.Comunicacao.Respostas;
 using MeuLivroDeReceitas.Domain.Repositorios;
 using MeuLivroDeReceitas.Domain.Repositorios.Profile;
+using MeuLivroDeReceitas.Exceptions.ExceptionsBase;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +26,7 @@ public class RegistrarProfileUseCase : IRegistrarProfileUseCase
     public async Task<RespostaProfileRegistrado> Executar(RequisicaoRegistrarProfile requisicao)
     {
         var entidade = _mapper.Map<MeuLivroDeReceitas.Domain.Entidade.UserProfile>(requisicao);
-
+        await  Validar(requisicao);
         await _profileWriteOnly.Adicionar(entidade);
         await _UnidadeDeTrabalho.Commit();
 
@@ -32,5 +34,19 @@ public class RegistrarProfileUseCase : IRegistrarProfileUseCase
         {
             Id = entidade.Id
         };
+    }
+
+    private  async Task Validar(RequisicaoRegistrarProfile profile)
+    {
+        var validar = new RegistrarProfileValidator();
+        var result = validar.Validate(profile);
+        if (!result.IsValid)
+        {
+
+            var messageError = result.Errors.Select(e => e.ErrorMessage).ToList();
+
+            throw new ErrosDeValidacaoException(messageError);
+        }
+     
     }
 }
