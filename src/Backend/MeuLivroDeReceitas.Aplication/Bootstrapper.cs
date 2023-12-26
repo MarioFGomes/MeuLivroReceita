@@ -2,6 +2,8 @@
 using MeuLivroDeReceitas.Aplication.Servicos.Token;
 using MeuLivroDeReceitas.Aplication.Servicos.UserLogado;
 using MeuLivroDeReceitas.Aplication.UseCases.Login.FazerLogin;
+using MeuLivroDeReceitas.Aplication.UseCases.Profile.RecuperarPerfil;
+using MeuLivroDeReceitas.Aplication.UseCases.Profile.Registrar;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.AlterarSenha;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.RecuperarSenha;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.Registrar;
@@ -47,6 +49,8 @@ public static class Bootstrapper
                .AddScoped<ILoginUseCase, LoginUseCase>()
                .AddScoped<IAlterarSenhaUseCase, AlterarSenhaUseCase>()
                .AddScoped<IUsuarioLogado, UsuarioLogado>()
-               .AddScoped<IRecuperarSenhaUseCase, RecuperarSenhaUseCase>();
+               .AddScoped<IRecuperarSenhaUseCase, RecuperarSenhaUseCase>()
+               .AddScoped<IRegistrarProfileUseCase, RegistrarProfileUseCase>()
+               .AddScoped<IRecuperarPerfilUseCase, RecuperarPerfilUseCase>();
     }
 }

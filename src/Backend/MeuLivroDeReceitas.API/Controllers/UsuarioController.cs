@@ -22,6 +22,24 @@ namespace MeuLivroDeReceitas.API.Controllers
             return Created(string.Empty, resultado);
         }
 
+        [HttpPost]
+        [Route("recuperar-senha")]
+        [ProducesResponseType(typeof(RespostaVarificationCode), StatusCodes.Status200OK)]
+        public async Task<IActionResult> RecuperarPorId([FromServices] IRecuperarSenhaUseCase useCase, [FromBody] RequesicaoRecuperarSenha requisicao) {
+            var resultado = await useCase.Executar(requisicao.Email);
+
+            return Ok(resultado);
+        }
+
+        [HttpPost]
+        [Route("recuperar-senha")]
+        [ProducesResponseType(typeof(RespostaVarificationCode), StatusCodes.Status200OK)]
+        public async Task<IActionResult> RecuperarPorUserName([FromServices] IRecuperarSenhaUseCase useCase, [FromBody] RequesicaoRecuperarSenha requisicao) {
+            var resultado = await useCase.Executar(requisicao.Email);
+
+            return Ok(resultado);
+        }
+
         [HttpPut]
         [Route("alterar-senha")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -33,26 +51,35 @@ namespace MeuLivroDeReceitas.API.Controllers
             return NoContent();
         }
 
+        [HttpPost]
+        [Route("recuperar-senha")]
+        [ProducesResponseType(typeof(RespostaVarificationCode), StatusCodes.Status200OK)]
+        public async Task<IActionResult> RecuperarSenha([FromServices] IRecuperarSenhaUseCase useCase, [FromBody] RequesicaoRecuperarSenha requisicao) {
+            var resultado = await useCase.Executar(requisicao.Email);
+
+            return Ok(resultado);
+        }
+
+        
 
         [HttpPut]
-        [Route("alterar-foto")]
+        [Route("atualizar-usuario")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ServiceFilter(typeof(AuthenticatedUser))]
-        public async Task<IActionResult> AlterarFotoPerfil([FromServices] IAlterarSenhaUseCase useCase, [FromBody] RequisicaoAlterarSenha request)
-        {
+        public async Task<IActionResult> AtualizarUsuario([FromServices] IAlterarSenhaUseCase useCase, [FromBody] RequisicaoAlterarSenha request) {
             await useCase.Executar(request);
 
             return NoContent();
         }
 
-        [HttpPost]
-        [Route("recuperar-senha")]
-        [ProducesResponseType(typeof(RespostaVarificationCode),StatusCodes.Status200OK)]
-        public async Task<IActionResult> RecuperarSenha([FromServices] IRecuperarSenhaUseCase useCase, [FromBody] RequesicaoRecuperarSenha requisicao)
-        {
-            var resultado = await useCase.Executar(requisicao.Email);
+        [HttpPut]
+        [Route("Deletar-usuario")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ServiceFilter(typeof(AuthenticatedUser))]
+        public async Task<IActionResult> DeletarUsuario([FromServices] IAlterarSenhaUseCase useCase, [FromBody] RequisicaoAlterarSenha request) {
+            await useCase.Executar(request);
 
-            return Ok(resultado);
+            return NoContent();
         }
 
     }

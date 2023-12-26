@@ -21,8 +21,4 @@
     <ProjectReference Include="..\MeuLivroDeReceitas.Domain\MeuLivroDeReceitas.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\Profile\RecuperarPerfil\" />
-  </ItemGroup>
-
 </Project>

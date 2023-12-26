@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
+using MeuLivroDeReceitas.Comunicacao.Respostas;
 using MeuLivroDeReceitas.Domain.Entidade;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace MeuLivroDeReceitas.Aplication.Servicos.Automapper
             .ForMember(destino=>destino.Senha,config=>config.Ignore());
 
             CreateMap<RequisicaoRegistrarProfile, UserProfile>();
+            CreateMap<UserProfile, RespostaProfile>();
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MeuLivroDeReceitas.Comunicacao.Respostas;
-internal class RespostaProfile
+public class RespostaProfile
 {
     public Guid Id { get; set; }
     public string Description { get; set; }
