@@ -23,8 +23,8 @@ namespace MeuLivroDeReceitas.API.Controllers
         }
 
         [HttpPost]
-        [Route("recuperar-senha")]
-        [ProducesResponseType(typeof(RespostaVarificationCode), StatusCodes.Status200OK)]
+        [Route("GetById")]
+        [ProducesResponseType(typeof(RespostaUser), StatusCodes.Status200OK)]
         public async Task<IActionResult> RecuperarPorId([FromServices] IRecuperarSenhaUseCase useCase, [FromBody] RequesicaoRecuperarSenha requisicao) {
             var resultado = await useCase.Executar(requisicao.Email);
 
