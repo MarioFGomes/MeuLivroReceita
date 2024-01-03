@@ -1,5 +1,7 @@
 using MeuLivroDeReceitas.API.Filtros;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.AlterarSenha;
+using MeuLivroDeReceitas.Aplication.UseCases.Usuario.BuscarPorId;
+using MeuLivroDeReceitas.Aplication.UseCases.Usuario.BuscarPorUserName;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.RecuperarSenha;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.Registrar;
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
@@ -25,17 +27,16 @@ namespace MeuLivroDeReceitas.API.Controllers
         [HttpPost]
         [Route("GetById")]
         [ProducesResponseType(typeof(RespostaUser), StatusCodes.Status200OK)]
-        public async Task<IActionResult> RecuperarPorId([FromServices] IRecuperarSenhaUseCase useCase, [FromBody] RequesicaoRecuperarSenha requisicao) {
-            var resultado = await useCase.Executar(requisicao.Email);
-
+        public async Task<IActionResult> RecuperarPorId([FromServices] IBuscarPorIdUseCase useCase, [FromQuery] Guid Id) {
+            var resultado = await useCase.Execute(Id);
             return Ok(resultado);
         }
 
         [HttpPost]
         [Route("recuperar-senha")]
-        [ProducesResponseType(typeof(RespostaVarificationCode), StatusCodes.Status200OK)]
-        public async Task<IActionResult> RecuperarPorUserName([FromServices] IRecuperarSenhaUseCase useCase, [FromBody] RequesicaoRecuperarSenha requisicao) {
-            var resultado = await useCase.Executar(requisicao.Email);
+        [ProducesResponseType(typeof(RespostaUser), StatusCodes.Status200OK)]
+        public async Task<IActionResult> RecuperarPorUserName([FromServices] IBuscarPorUserNameUseCase useCase, [FromQuery] string requisicao) {
+            var resultado = useCase.Execute(requisicao);
 
             return Ok(resultado);
         }

@@ -19,6 +19,8 @@ namespace MeuLivroDeReceitas.Aplication.Servicos.Automapper
 
             CreateMap<RequisicaoRegistrarProfile, UserProfile>();
             CreateMap<UserProfile, RespostaProfile>();
+
+            CreateMap<Usuario, RespostaUser>();
         }
     }
 }

@@ -45,10 +45,9 @@ public class UsuarioRepositorio : IUsuarioReadOnlyRepositorio, IUsuarioWriteOnly
             .SingleOrDefaultAsync(c => c.Id.Equals(Id));
     }
 
-    public async Task<Usuario> RecuperarPorUserName(string username)
+    public  List<Usuario> RecuperarPorUserName(string username)
     {
-        return await _contexto.usuarios
-            .SingleOrDefaultAsync(c => c.Nome.Equals(username));
+        return  _contexto.usuarios.ToList().Where(e=>e.Equals(username)).ToList();
     }
 
     public void Update(Usuario usuario)
