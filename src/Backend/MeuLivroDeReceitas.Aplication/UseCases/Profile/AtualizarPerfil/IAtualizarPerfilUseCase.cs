@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MeuLivroDeReceitas.Aplication.UseCases.Usuario.BuscarPorUserName; 
-public interface IBuscarPorUserNameUseCase 
+namespace MeuLivroDeReceitas.Aplication.UseCases.Profile.AtualizarPerfil; 
+public interface IAtualizarPerfilUseCase 
 {
-    List<RespostaUser> Execute(string  username);
+    Task Executar(Guid Id);
 }

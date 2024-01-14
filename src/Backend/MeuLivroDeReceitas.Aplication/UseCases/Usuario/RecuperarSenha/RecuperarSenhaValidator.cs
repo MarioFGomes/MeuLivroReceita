@@ -4,14 +4,12 @@ using MeuLivroDeReceitas.Exceptions;
 
 namespace MeuLivroDeReceitas.Aplication.UseCases.Usuario.RecuperarSenha
 {
-    public class RecuperarSenhaValidator: AbstractValidator<RequesicaoRecuperarSenha>
+    public class RecuperarSenhaValidator: AbstractValidator<RequisicaoRecuperarSenha>
     {
         public RecuperarSenhaValidator()
         {
-            RuleFor(c => c.Email).NotEmpty().WithMessage(ResourceMensagensdeErro.Email_Usuario_Embranco);
-            When(c => !string.IsNullOrEmpty(c.Email), () => {
-                RuleFor(c => c.Email).EmailAddress().WithMessage(ResourceMensagensdeErro.Email_INVALIDO);
-            });
+            RuleFor(c => c.chanel).NotEmpty().WithMessage(ResourceMensagensdeErro.Email_Usuario_Embranco);
+            RuleFor(c => c.Data).NotEmpty().WithMessage(ResourceMensagensdeErro.Email_Usuario_Embranco);
         }
     }
 }

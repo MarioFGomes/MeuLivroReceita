@@ -1,13 +1,13 @@
 using MeuLivroDeReceitas.API.Filtros;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.AlterarSenha;
+using MeuLivroDeReceitas.Aplication.UseCases.Usuario.AtualizarUser;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.BuscarPorId;
-using MeuLivroDeReceitas.Aplication.UseCases.Usuario.BuscarPorUserName;
+using MeuLivroDeReceitas.Aplication.UseCases.Usuario.BuscarUser;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.RecuperarSenha;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.Registrar;
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
 using MeuLivroDeReceitas.Comunicacao.Respostas;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.Mail;
 
 namespace MeuLivroDeReceitas.API.Controllers
 {
@@ -25,7 +25,7 @@ namespace MeuLivroDeReceitas.API.Controllers
         }
 
         [HttpPost]
-        [Route("GetById")]
+        [Route("recuperar-Id")]
         [ProducesResponseType(typeof(RespostaUser), StatusCodes.Status200OK)]
         public async Task<IActionResult> RecuperarPorId([FromServices] IBuscarPorIdUseCase useCase, [FromQuery] Guid Id) {
             var resultado = await useCase.Execute(Id);
@@ -35,8 +35,9 @@ namespace MeuLivroDeReceitas.API.Controllers
         [HttpPost]
         [Route("recuperar-senha")]
         [ProducesResponseType(typeof(RespostaUser), StatusCodes.Status200OK)]
-        public async Task<IActionResult> RecuperarPorUserName([FromServices] IBuscarPorUserNameUseCase useCase, [FromQuery] string requisicao) {
-            var resultado = useCase.Execute(requisicao);
+        public IActionResult RecuperarUser([FromServices] IBuscarUserUseCase useCase, [FromQuery] string query) {
+           
+            var resultado = useCase.Execute(query);
 
             return Ok(resultado);
         }
@@ -52,23 +53,13 @@ namespace MeuLivroDeReceitas.API.Controllers
             return NoContent();
         }
 
-        [HttpPost]
-        [Route("recuperar-senha")]
-        [ProducesResponseType(typeof(RespostaVarificationCode), StatusCodes.Status200OK)]
-        public async Task<IActionResult> RecuperarSenha([FromServices] IRecuperarSenhaUseCase useCase, [FromBody] RequesicaoRecuperarSenha requisicao) {
-            var resultado = await useCase.Executar(requisicao.Email);
-
-            return Ok(resultado);
-        }
-
-        
-
         [HttpPut]
         [Route("atualizar-usuario")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ServiceFilter(typeof(AuthenticatedUser))]
-        public async Task<IActionResult> AtualizarUsuario([FromServices] IAlterarSenhaUseCase useCase, [FromBody] RequisicaoAlterarSenha request) {
-            await useCase.Executar(request);
+        public async Task<IActionResult> AtualizarUsuario([FromServices] IAtualizarUsuario useCase, [FromBody] RequisicaoAtualizarUsuario request, [FromQuery] Guid Id) {
+           
+            await useCase.Executar(request, Id);
 
             return NoContent();
         }
@@ -77,10 +68,22 @@ namespace MeuLivroDeReceitas.API.Controllers
         [Route("Deletar-usuario")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ServiceFilter(typeof(AuthenticatedUser))]
-        public async Task<IActionResult> DeletarUsuario([FromServices] IAlterarSenhaUseCase useCase, [FromBody] RequisicaoAlterarSenha request) {
-            await useCase.Executar(request);
+        public async Task<IActionResult> DeletarUsuario(Guid Id) 
+        {
+                
 
             return NoContent();
+        }
+
+
+        [HttpPost]
+        [Route("recuperar-senha")]
+        [ProducesResponseType(typeof(RespostaVarificationCode), StatusCodes.Status200OK)]
+        public async Task<IActionResult> RecuperarSenha([FromServices] IRecuperarSenhaUseCase useCase, [FromBody] RequisicaoRecuperarSenha requisicao) {
+            
+            var resultado = await useCase.Executar(requisicao);
+
+            return Ok(resultado);
         }
 
     }
