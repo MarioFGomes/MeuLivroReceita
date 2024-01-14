@@ -6,7 +6,6 @@ using Newtonsoft.Json;
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
-using Twilio.Jwt.AccessToken;
 using Xunit;
 
 namespace WebApi.Teste.V1;
