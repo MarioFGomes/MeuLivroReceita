@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.Configuration.Annotations;
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
 using MeuLivroDeReceitas.Comunicacao.Respostas;
 using MeuLivroDeReceitas.Domain.Entidade;
@@ -21,6 +22,9 @@ namespace MeuLivroDeReceitas.Aplication.Servicos.Automapper
             CreateMap<UserProfile, RespostaProfile>();
 
             CreateMap<Usuario, RespostaUser>();
+
+            CreateMap<RequisicaoAtualizarUsuario, Usuario>();
+            
         }
     }
 }

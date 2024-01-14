@@ -5,5 +5,5 @@ namespace MeuLivroDeReceitas.Aplication.UseCases.Usuario.RecuperarSenha;
 
 public interface IRecuperarSenhaUseCase
 {
-    Task<RespostaVarificationCode> Executar(string email);
+    Task<RespostaVarificationCode> Executar(RequisicaoRecuperarSenha requisicao);
 }

@@ -2,11 +2,8 @@
 using MeuLivroDeReceitas.Comunicacao.Requisicoes;
 using MeuLivroDeReceitas.Comunicacao.Respostas;
 using MeuLivroDeReceitas.Domain.Repositorios.Usuario;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MeuLivroDeReceitas.Exceptions.ExceptionsBase;
+
 
 namespace MeuLivroDeReceitas.Aplication.UseCases.Usuario.RecuperarSenha;
 
@@ -17,18 +14,34 @@ public class RecuperarSenhaUseCase : IRecuperarSenhaUseCase
     {
         _usuarioReadOnlyRepositorio = usuarioReadOnlyRepositorio;
     }
-    public async Task<RespostaVarificationCode> Executar(string email)
+    public async Task<RespostaVarificationCode> Executar(RequisicaoRecuperarSenha requesicao)
     {
-        var result=await _usuarioReadOnlyRepositorio.RecuperarPorEmail(email);
-        if (result is null) throw new Exception("usuario não existe");
+        Validar(requesicao);
 
-        return new RespostaVarificationCode
-        {
+        //var result=await _usuarioReadOnlyRepositorio.RecuperarPorEmail(email);
+
+        //if (result is null) throw new Exception("usuario não existe");
+
+        return new RespostaVarificationCode {
 
             Codigo = VerificationCodeGenerete.Generate()
 
         };
-               
- 
+
+
+    }
+
+    private void Validar(RequisicaoRecuperarSenha requisicao) {
+
+        var validar = new RecuperarSenhaValidator();
+
+        var result = validar.Validate(requisicao);
+
+        if (!result.IsValid) {
+
+            var messageError = result.Errors.Select(e => e.ErrorMessage).ToList();
+
+            throw new ErrosDeValidacaoException(messageError);
+        }
     }
 }

@@ -18,8 +18,11 @@ public class RecuperarPerfilUseCase : IRecuperarPerfilUseCase
         _mapper = mapper;
     }
     public async Task<RespostaProfile> Executar(Guid Id) {
+
         var profile = await _profileReadOnly.RecuperarPorId(Id);
+
         var ResponseProfile=_mapper.Map<RespostaProfile>(profile);
+
         return ResponseProfile;
     }
 }

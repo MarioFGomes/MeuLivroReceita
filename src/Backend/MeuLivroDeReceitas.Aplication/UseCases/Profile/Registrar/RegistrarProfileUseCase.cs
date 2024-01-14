@@ -25,8 +25,8 @@ public class RegistrarProfileUseCase : IRegistrarProfileUseCase
     }
     public async Task<RespostaProfileRegistrado> Executar(RequisicaoRegistrarProfile requisicao)
     {
+        await Validar(requisicao);
         var entidade = _mapper.Map<MeuLivroDeReceitas.Domain.Entidade.UserProfile>(requisicao);
-        await  Validar(requisicao);
         await _profileWriteOnly.Adicionar(entidade);
         await _UnidadeDeTrabalho.Commit();
 
@@ -39,7 +39,9 @@ public class RegistrarProfileUseCase : IRegistrarProfileUseCase
     private  async Task Validar(RequisicaoRegistrarProfile profile)
     {
         var validar = new RegistrarProfileValidator();
+
         var result = validar.Validate(profile);
+
         if (!result.IsValid)
         {
 

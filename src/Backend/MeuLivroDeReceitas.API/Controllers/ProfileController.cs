@@ -1,4 +1,5 @@
 ﻿using MeuLivroDeReceitas.API.Filtros;
+using MeuLivroDeReceitas.Aplication.UseCases.Profile.AtualizarPerfil;
 using MeuLivroDeReceitas.Aplication.UseCases.Profile.RecuperarPerfil;
 using MeuLivroDeReceitas.Aplication.UseCases.Profile.Registrar;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.AlterarSenha;
@@ -33,7 +34,8 @@ public class ProfileController: MeuLivroDeReceitaController
     [HttpPut]
     [Route("atualizar-profile")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> AtualizarProfile(Guid Id) {
+    public async Task<IActionResult> AtualizarProfile([FromServices] IAtualizarPerfilUseCase usecase ,Guid Id) {
+
         //var resultado = await useCase.Executar(request);
 
         return Ok();
@@ -49,15 +51,6 @@ public class ProfileController: MeuLivroDeReceitaController
         return Ok();
     }
 
-    [HttpPut]
-    [Route("alterar-foto")]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ServiceFilter(typeof(AuthenticatedUser))]
-    public async Task<IActionResult> AlterarFotoPerfil([FromServices] IAlterarSenhaUseCase useCase, [FromBody] RequisicaoAlterarSenha request) {
-        await useCase.Executar(request);
-
-        return NoContent();
-    }
 
     [HttpPut]
     [Route("deletar-profile")]
