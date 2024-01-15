@@ -1,3 +1,4 @@
+using Azure.Core;
 using MeuLivroDeReceitas.API.Filtros;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.AlterarSenha;
 using MeuLivroDeReceitas.Aplication.UseCases.Usuario.AtualizarUser;
@@ -68,9 +69,10 @@ namespace MeuLivroDeReceitas.API.Controllers
         [Route("Deletar-usuario")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ServiceFilter(typeof(AuthenticatedUser))]
-        public async Task<IActionResult> DeletarUsuario(Guid Id) 
+        public async Task<IActionResult> DeletarUsuario([FromServices] IAtualizarUsuario useCase, [FromBody] RequisicaoAtualizarUsuario request, [FromQuery]Guid Id)
         {
-                
+
+            await useCase.Executar(request, Id);
 
             return NoContent();
         }

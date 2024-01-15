@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UseCases\Usuario\AtulizarUsuario\" />
+    <Folder Include="UseCases\Profile\Atualizar\" />
   </ItemGroup>
 
 </Project>
