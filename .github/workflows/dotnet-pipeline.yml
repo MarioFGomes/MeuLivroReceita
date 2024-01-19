@@ -6,34 +6,56 @@ on:
       - master
 
 jobs:
-  build_and_test:
+  build:
+    name: Build Aplication
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.0.x
-
-    - name: Restore NuGet Packages
-      run: dotnet restore
-
     - name: Build
-      run: dotnet build --configuration Release
+      run: dotnet build --configuration Release  
+  
+  RestorePackages:
+        name: Run restore NuGet Packages
+        runs-on: ubuntu-latest
+        needs: build
 
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v3
 
-    - name: Login to Docker Hub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+          - name: Restore Packages
+            run: dotnet restore
+  UnitTest:
+      name: Run Unit Test
+      runs-on: ubuntu-latest
+      needs: RestorePackages
 
-    - name: Build and Publish Docker Image
-      run: |
-        docker build -t mariogomes333/meulivroreceitas:latest .
-        docker push mariogomes333/meulivroreceitas:latest
+      steps:
+          - name: Checkout
+            uses: actions/checkout@v3
+
+          - name: Test
+            run: dotnet test --no-restore --verbosity normal
+  Dockerize:
+      name: Build and Publish Docker Image
+      runs-on: ubuntu-latest
+      needs: UnitTest
+
+      steps:
+        - name: Login to Docker Hub
+          uses: docker/login-action@v1
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+        - name: Build and Publish Docker Image
+          run: |
+           docker build -t mariogomes333/meulivroreceitas:latest .
+           docker push mariogomes333/meulivroreceitas:latest
